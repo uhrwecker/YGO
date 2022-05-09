@@ -1,0 +1,31 @@
+BASE = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
+
+TYP_CONV = {
+    'effect': 'Effect%20Monster',
+    'flip': 'Flip%20Effect%20Monster',
+    'flip tuner': 'Flip%20Tuner%20Effect%20Monster',
+    'gemini': 'Gemini%20Monster',
+    'normal': 'Normal%20Monster',
+    'normal tuner': 'Normal%20Tuner%20Monster',
+    'pendulum effect': 'Pendulum%20Effect%20Monster',
+    'pendulum flip': 'Pendulum%20Flip%20Effect%20Monster',
+    'pendulum normal': 'Pendulum%20Normal%20Monster',
+    'pendulum tuner': 'Pendulum%20Tuner%20Effect%20Monster',
+    'ritual effect': 'Ritual%20Effect%20Monster',
+    'ritual': 'Ritual%20Monster',
+    'skill': 'Skill%20Card',
+    'spell': 'Spell%20Card',
+    'spirit': 'Spirit%20Monster',
+    'toon': 'Toom%20Monster',
+    'trap': 'Trap%20Card',
+    'tuner': 'Tuner%20Monster',
+    'union': 'Union%20Effect%20Monster',
+    'fusion': 'Fusion%20Monster',
+    'link': 'Link%20Monster',
+    'pendulum fusion': 'Pendulum%20Fusion%20Effect%20Monster',
+    'synchro': 'Synchro%20Monster',
+    'synchro tuner': 'Synchro%20Tuner%20Monster',
+    'synchro pendulum': 'Synchro%20Pendulum%20Effect%20Monster',
+    'xyz': 'XYZ%20Monster',
+    'xyz pendulum': 'XYZ%20Pendulum%20Effect%20Monster'
+}
