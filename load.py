@@ -2,6 +2,8 @@ import requests
 import json
 import os
 
+from ygo.collection import coll
+
 
 def load_list_of_configs(fp):
     data = requests.get(fp)
@@ -24,4 +26,4 @@ def load_list_of_configs(fp):
                 del card['def']
             cards.append(card)
 
-        return cards
+        return coll.CardCollection(cards)

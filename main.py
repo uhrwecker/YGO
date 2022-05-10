@@ -1,10 +1,6 @@
-import load
 import ygo
-from ygo.monster import *
-from ygo.collection import card, coll
+import ygo.monster as ym
 
-fp = ygo.get_all_monsters('effect')
-data = load.load_list_of_configs(fp)
+co = ym.get_xyz_monster()
 
-co = coll.CardCollection(data)
-print(co.monsters())
+print(co.search_by_lvl_rank(9).random_card())

@@ -1,6 +1,6 @@
 class Card:
     def __init__(self, id=0, name='', type='', desc='', archetype='',
-                 atk=0, deff=0, level=0, race='', linkval=0, linkmarkers=[], scale=0,
+                 atk=-1, deff=-1, level=0, race='', linkval=0, linkmarkers=[], scale=0,
                  attribute='', card_sets=[], card_images=[], card_prices=[], banlist_info=[]):
         self.id = id
         self.name = name
