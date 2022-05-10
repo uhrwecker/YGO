@@ -3,7 +3,7 @@ from constants import *
 
 def get_all(sort='name', kind='', archetype='', banlist='',
             cardset='', format='', startdate='',
-            enddate='', return_val='data'):
+            enddate='', return_val='str'):
     fp = BASE
     fp += f'?sort={sort}'
 
@@ -31,9 +31,9 @@ def get_all(sort='name', kind='', archetype='', banlist='',
         return fp
 
 
-def get_all_monsters(name='', fname='', type='', attr='', atk=None, deff=None,
+def get_all_monsters(kind, name='', fname='', type='', attr='', atk=None, deff=None,
                      link=0, linkmarker='', linkval=0, scale=None,
-                     level=0, sort='name', kind='', archetype='', banlist='',
+                     level=0, sort='name', archetype='', banlist='',
                      cardset='', format='', startdate='',
                      enddate=''):
     base = get_all(sort=sort, kind=kind, archetype=archetype, banlist=banlist,

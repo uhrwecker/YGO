@@ -12,6 +12,16 @@ def load_list_of_configs(fp):
 
     os.remove('./local.json')
 
-    for item in data['data']:
-        print(item)
-    return data
+    if 'error' in data:
+        return []
+
+    else:
+        data = data['data']
+        cards = []
+        for card in data:
+            if 'def' in card:
+                card['deff'] = card['def']
+                del card['def']
+            cards.append(card)
+
+        return cards

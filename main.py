@@ -1,6 +1,10 @@
 import load
-from ygo.card import *
+import ygo
 from ygo.monster import *
+from ygo.collection import card, coll
 
-fp = get_link_monster(fname='Weather')
+fp = ygo.get_all_monsters('effect')
 data = load.load_list_of_configs(fp)
+
+co = coll.CardCollection(data)
+print(co.monsters())
