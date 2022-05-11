@@ -1,11 +1,57 @@
 import random
+import json
+from datetime import datetime
 
 from ygo.collection import card
 
 
 class CardCollection:
-    def __init__(self, cards):
+    def __init__(self, cards, identifier=''):
         self.collection = [card.Card(**data) for data in cards]
+        if not identifier:
+            dateTimeObj = datetime.now()
+            identifier = dateTimeObj.strftime("%d-%b-%Y_%H-%M-%S")
+        self.id = identifier
+
+    def add_card(self, cardd, copy=False):
+        if copy:
+            return self.collection + [cardd]
+        else:
+            self.collection.append(cardd)
+            return self
+
+    def remove_card(self, cardd, copy=False):
+        if type(cardd) == str:
+            if cardd in [c.name for c in self.collection]:
+                cardd = [c for c in self.collection if c.name == cardd][0]
+            else:
+                return ValueError(f'No card with name {cardd} in collection.')
+        if cardd not in self.collection:
+            return ValueError('Card not found in collection.')
+
+        if copy:
+            return [c for c in self.collection if c != cardd][0]
+        else:
+            self.collection.remove(cardd)
+            return self
+
+    def sort(self, by='name', reverse=False, copy=False):
+        if copy:
+            return sorted(self.collection, key=lambda x: getattr(x, by), reverse=reverse)
+        else:
+            self.collection.sort(key=lambda x: getattr(x, by), reverse=reverse)
+            return self
+
+    def save(self, fp='./'):
+        data = [c.get_dict() for c in self.collection]
+        info = {
+            'identifier': self.id,
+            'data': data
+        }
+        with open(fp + self.id + '.json', 'w') as file:
+            json.dump(info, file, indent=4)
+
+        return info
 
     def random_card(self):
         return random.choice(self.collection)

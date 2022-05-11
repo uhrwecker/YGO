@@ -1,4 +1,4 @@
-from ygo.load import load_list_of_configs
+from ygo.load import _load_list_of_configs, load_collection
 from ygo.constants import *
 
 
@@ -27,7 +27,7 @@ def get_all(sort='name', kind='', archetype='', banlist='',
         fp += f'&startdate={startdate}&enddate={enddate}'
 
     if return_val == 'data':
-        return load_list_of_configs(fp)
+        return _load_list_of_configs(fp)
     elif return_val == 'str':
         return fp
 
@@ -76,7 +76,7 @@ def get_all_monsters(kind, name='', fname='', type='', attr='', atk=None, deff=N
     if level != 0:
         base += f'&level={level}'
 
-    return load_list_of_configs(base)
+    return _load_list_of_configs(base)
 
 
 def get_all_spells(name='', fname='', type='', sort='name', archetype='', banlist='',
@@ -98,7 +98,7 @@ def get_all_spells(name='', fname='', type='', sort='name', archetype='', banlis
     if type:
         base += f'&race={type.title()}'
 
-    return load_list_of_configs(base)
+    return _load_list_of_configs(base)
 
 
 def get_all_traps(name='', fname='', type='', sort='name', archetype='', banlist='',
@@ -120,16 +120,16 @@ def get_all_traps(name='', fname='', type='', sort='name', archetype='', banlist
     if type:
         base += f'&race={type.title()}'
 
-    return load_list_of_configs(base)
+    return _load_list_of_configs(base)
 
 
 def get_all_archetypes():
     fp = 'https://db.ygoprodeck.com/api/v7/archetypes.php'
 
-    return load_list_of_configs(fp)
+    return _load_list_of_configs(fp)
 
 
 def get_all_cardsets():
     fp = 'https://db.ygoprodeck.com/api/v7/cardsets.php'
 
-    return load_list_of_configs(fp)
+    return _load_list_of_configs(fp)

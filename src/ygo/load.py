@@ -5,7 +5,13 @@ import os
 from ygo.collection import coll
 
 
-def load_list_of_configs(fp):
+def load_collection(fp):
+    with open(fp, 'r') as file:
+        info = json.load(file)
+    return coll.CardCollection(info['data'], identifier=info['identifier'])
+
+
+def _load_list_of_configs(fp):
     data = requests.get(fp)
     open('./local.json', 'wb').write(data.content)
     del data
