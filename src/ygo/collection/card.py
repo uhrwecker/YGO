@@ -1,3 +1,8 @@
+import requests
+from PIL import Image
+import os
+
+
 class Card:
     def __init__(self, id=0, name='', type='', desc='', archetype='',
                  atk=-1, deff=-1, level=0, race='', linkval=0, linkmarkers=[], scale=0,
@@ -35,12 +40,27 @@ class Card:
             'linkval': self.linkval,
             'linkmarkers': self.linkmarkers,
             'scale': self.scale,
+            'card_images': self.card_images,
             'card_sets': self.card_sets,
             'card_prices': self.card_prices,
             'banlist_info': self.banlist_info
         }
 
         return info
+
+    def download_image(self, fp='/home/jan-menno/Schreibtisch/images/'):
+        if os.path.isfile(fp + f'{self.id}.gif'):
+            pass
+        else:
+            image = requests.get(self.card_images[0]['image_url'])
+            open(fp + f'{self.id}.jpg', 'wb').write(image.content)
+
+            im = Image.open(fp + f'{self.id}.jpg')
+            im.save(fp + f'{self.id}.gif')
+
+            os.remove(fp + f'{self.id}.jpg')
+
+        return fp + f'{self.id}.gif'
 
     def __repr__(self):
         line = f'Name: {self.name} \n'

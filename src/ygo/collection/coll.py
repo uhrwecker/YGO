@@ -56,6 +56,51 @@ class CardCollection:
     def random_card(self):
         return random.choice(self.collection)
 
+    def view(self):
+        import appJar
+        import os
+        print('Loading images ...')
+        path = os.getcwd()
+        os.mkdir(path + '/images/')
+
+        image_fp = []
+        for c in self.collection:
+            image_fp.append(c.download_image(path + '/images/'))
+
+        self.i = 0
+
+        def left():
+            if self.i == 0:
+                self.i = len(image_fp) - 1
+            else:
+                self.i -= 1
+            app.setImage('simple', image_fp[self.i])
+
+        def right():
+            if self.i == len(image_fp) - 1:
+                self.i = 0
+            else:
+                self.i += 1
+            app.setImage('simple', image_fp[self.i])
+
+        app = appJar.gui()
+
+        app.startLabelFrame("Cards", 0, 0, colspan=2)
+        app.addImage("simple", image_fp[0])
+        app.stopLabelFrame()
+
+        app.addButton('<', left, 1, 0, colspan=1)
+        app.addButton('>', right, 1, 1, colspan=1)
+
+        app.bindKey("<Right>", right)
+        app.bindKey("<Left>", left)
+
+        app.go()
+
+        for item in image_fp:
+            os.remove(item)
+        os.rmdir(path + '/images/')
+
     def search_in_description(self, search):
         return CardCollection([data.get_dict() for data in self.collection if search in data.desc])
 

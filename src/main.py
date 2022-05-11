@@ -6,4 +6,5 @@ print(co.id)
 
 print(co.search_by_lvl_rank(9).sort(by='atk'))
 cm = co.search_by_lvl_rank(9).sort(by='atk')
-cm.save()
+#cm.collection[0].download_image()
+cm.view()
