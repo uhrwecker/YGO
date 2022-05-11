@@ -1,5 +1,4 @@
-import ygo
-import ygo.monster as ym
+import src.ygo.monster as ym
 
 co = ym.get_xyz_monster()
 

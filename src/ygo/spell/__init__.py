@@ -1,6 +1,3 @@
-from ygo.spell.card import *
-
-
 __all__ = ['get_cont_spell',
            'get_all_spells',
            'get_equip_spell',

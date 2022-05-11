@@ -1,6 +1,5 @@
-from constants import *
-
-from load import load_list_of_configs
+from ygo.load import load_list_of_configs
+from ygo.constants import *
 
 
 def get_all(sort='name', kind='', archetype='', banlist='',
